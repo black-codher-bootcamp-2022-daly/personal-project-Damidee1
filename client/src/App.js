@@ -1,45 +1,63 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
+import Defination from "./Defination";
 
-// SERVICES THAT CALL OUR API ENDPOINTS
-import { getAllProfiles } from "./services/profileService";
+console.log(process.env.REACT_APP_MEDIC_DICT_KEY);
 
-function App() {
-  const [profiles, setProfiles] = useState(null);
+const App = () => {
+  const [word, setWord] = useState();
+  const [mean, setMean] = useState([]);
+  const [main, setMain] = useState([]);
+  const [audio, setAudio] = useState([]);
 
-  useEffect(() => {
-    async function getProfiles() {
-      if (!profiles) {
-        const response = await getAllProfiles();
-        setProfiles(response);
-      }
-    }
-
-    getProfiles();
-  }, [profiles]);
-
-  const renderProfile = (user) => {
-    return (
-      <li key={user._id}>
-        <h3>
-          {`${user.first_name} 
-          ${user.last_name}`}
-        </h3>
-        <p>{user.location}</p>
-      </li>
+  const dataApi = async () => {
+    const data = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
+    const dataJ = await data.json();
+    setMean(dataJ);
+    console.log(dataJ);
+    setMain(dataJ[0]);
+    console.log(dataJ[0]);
+    const url = dataJ[0].phonetics[0].audio;
+    setAudio(url);
   };
 
+  useEffect(() => {
+    dataApi();
+  }, []);
+
+  const Search = () => {
+    dataApi();
+    setWord("");
+  };
   return (
-    <div>
-      <ul>
-        {profiles && profiles.length > 0 ? (
-          profiles.map((profile) => renderProfile(profile))
-        ) : (
-          <p>No profiles found</p>
-        )}
-      </ul>
-    </div>
+    <>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="dict">Medical Dictionary</div>
+          <div className="searchBox">
+            <input
+              type="text"
+              className="input_bar"
+              placeholder="Type your word"
+              id="floatingInput"
+              value={word}
+              onChange={(e) => setWord(e.target.value)}
+            />
+            <button className="btn" onClick={Search}>
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      {word === "" ? (
+        <Defination mean={mean} main={main} audio={audio} />
+      ) : (
+        <div className="page_bg">type a word in the box</div>
+      )}
+    </>
   );
-}
+};
 
 export default App;
