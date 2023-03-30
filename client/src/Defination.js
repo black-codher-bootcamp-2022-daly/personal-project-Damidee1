@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "./Select.js";
-import Example from "./Example";
+import Form from "./Form";
 import "./App.css";
 // import Synonyms from "./Synonym";
 // import Antonyms from "./Antonyms";
@@ -25,12 +25,12 @@ const Defination = ({ mean, main, audio }) => {
           <div className="exp">Symptoms :</div>
           <div>
             <ol>
-              <Example mean={mean} />
+              <Form mean={mean} />
             </ol>
           </div>
-          <div className="syn">Other refrences :</div>
+          <div className="syn">Need other refrences?:</div>
           <div className="ref-button">
-            <button className="ref-butn">Click to send to email</button>
+            <button className="ref-butn">Click here</button>
           </div>
           {/* <div>
             <ol className="syn_mean">
