@@ -1,7 +1,14 @@
 * {
   box-sizing: border-box;
-  background-color: aqua;
-  background-image: url(./medic.png);
+  background-color: rgb(236, 239, 239);
+  margin-left: 5px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center center;
+  background-attachment: fixed;
+  backdrop-filter: blur(10px);
+  background-image: url(./projectlogo2.png);
 }
 
 .dict {
@@ -18,5 +25,47 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  border-radius: 5px;
+}
+.input_bar {
+  border-radius: 15px;
+  background: #dde6d2;
+  padding: 20px;
+  width: 150px;
+  height: 10px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  margin-left: 5px;
+}
+
+.page_bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.ref-butn {
+  margin-top: 10px;
+  border-radius: 25px;
+  background: #dde6d2;
+  padding: 20px;
+  width: 200px;
+  height: 20px;
+}
+button {
+  margin-right: 20px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  margin-left: 5px;
+}
+button:hover {
+  background-color: #efa1a1;
+  color: black;
 }

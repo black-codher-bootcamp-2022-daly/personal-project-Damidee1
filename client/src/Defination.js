@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "./Select.js";
 import Example from "./Example";
+import "./App.css";
 // import Synonyms from "./Synonym";
 // import Antonyms from "./Antonyms";
 
@@ -15,19 +16,22 @@ const Defination = ({ mean, main, audio }) => {
           ) : (
             <div className="audio_txt">Audio not found</div>
           )}
-          <div className="meanings">meaning & definitions :</div>
+          <div className="meanings">Meaning & definitions :</div>
           <div>
             <ol>
               <Select mean={mean} />
             </ol>
           </div>
-          <div className="exp">examples :</div>
+          <div className="exp">Symptoms :</div>
           <div>
             <ol>
               <Example mean={mean} />
             </ol>
           </div>
-          <div className="syn">synonyms :</div>
+          <div className="syn">Other refrences :</div>
+          <div className="ref-button">
+            <button className="ref-butn">Click to send to email</button>
+          </div>
           {/* <div>
             <ol className="syn_mean">
               <Synonyms mean={mean} />

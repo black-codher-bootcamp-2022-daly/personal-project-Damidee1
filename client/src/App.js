@@ -54,7 +54,7 @@ const App = () => {
       {word === "" ? (
         <Defination mean={mean} main={main} audio={audio} />
       ) : (
-        <div className="page_bg">type a word in the box</div>
+        <div className="page_bg">Type a word in the box</div>
       )}
     </>
   );
